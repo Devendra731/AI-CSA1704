@@ -1,0 +1,13 @@
+def minimax(depth, node, maxi, values):
+    if depth == 2:
+        return values[node]
+
+    if maxi:
+        return max(minimax(depth+1, node*2+i, False, values)
+                   for i in range(2))
+    else:
+        return min(minimax(depth+1, node*2+i, True, values)
+                   for i in range(2))
+
+values = [3,5,2,9]
+print("Best Value:", minimax(0,0,True,values))
