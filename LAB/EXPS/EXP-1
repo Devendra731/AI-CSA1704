@@ -1,0 +1,19 @@
+def safe(b, r, c):
+    for i in range(r):
+        if b[i] == c or abs(b[i]-c) == r-i:
+            return False
+    return True
+
+def solve(b, r=0):
+    if r == 8:
+        for x in b:
+            print(" ".join("Q" if x == j else "." for j in range(8)))
+        return True
+    for c in range(8):
+        if safe(b, r, c):
+            b[r] = c
+            if solve(b, r+1):
+                return True
+    return False
+
+solve([-1]*8)
