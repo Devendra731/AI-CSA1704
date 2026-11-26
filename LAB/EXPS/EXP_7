@@ -1,0 +1,18 @@
+g = {
+    "A":["B","C"],
+    "B":["D","E"],
+    "C":["F"],
+    "D":[],
+    "E":[],
+    "F":[]
+}
+
+def dfs(v, visited):
+    if v not in visited:
+        print(v, end=" ")
+        visited.add(v)
+
+        for n in g[v]:
+            dfs(n, visited)
+
+dfs("A", set())
