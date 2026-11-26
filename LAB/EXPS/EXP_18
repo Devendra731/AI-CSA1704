@@ -1,0 +1,24 @@
+student(101,'Arun').
+student(102,'Bala').
+
+teacher(t1,'Ramesh').
+teacher(t2,'Suresh').
+
+subject(csa17,'Artificial Intelligence').
+subject(csa18,'Machine Learning').
+
+enrolled(101,csa17).
+enrolled(102,csa18).
+
+teaches(t1,csa17).
+teaches(t2,csa18).
+
+details(ID,S,Sub,T) :-
+    student(ID,S),
+    enrolled(ID,C),
+    subject(C,Sub),
+    teaches(TID,C),
+    teacher(TID,T).
+
+% Query:
+% ?- details(101,S,Sub,T).
