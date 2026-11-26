@@ -1,0 +1,29 @@
+colors = ["Red", "Green", "Blue"]
+
+g = {
+    "A":["B","C"],
+    "B":["A","C","D"],
+    "C":["A","B","D"],
+    "D":["B","C"]
+}
+
+ans = {}
+
+def solve(nodes):
+    if not nodes:
+        return True
+
+    v = nodes[0]
+
+    for color in colors:
+        if all(ans.get(n) != color for n in g[v]):
+            ans[v] = color
+
+            if solve(nodes[1:]):
+                return True
+
+            del ans[v]
+
+    return False
+
+print(ans if solve(list(g)) else "No Solution")
