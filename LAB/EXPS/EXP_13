@@ -1,0 +1,22 @@
+def alphabeta(d, node, maxi, v, alpha, beta):
+    if d == 2:
+        return v[node]
+
+    if maxi:
+        best = -999
+        for i in range(2):
+            best = max(best, alphabeta(d+1,node*2+i,False,v,alpha,beta))
+            alpha = max(alpha,best)
+            if beta <= alpha:
+                break
+    else:
+        best = 999
+        for i in range(2):
+            best = min(best, alphabeta(d+1,node*2+i,True,v,alpha,beta))
+            beta = min(beta,best)
+            if beta <= alpha:
+                break
+
+    return best
+
+print(alphabeta(0,0,True,[3,5,2,9],-999,999))
