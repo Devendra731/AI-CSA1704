@@ -1,0 +1,12 @@
+person('Ravi','2002-05-10').
+person('Kiran','2001-08-15').
+person('Deva','2003-01-20').
+
+dob(Name,Date) :-
+    person(Name,Date).
+
+% Query:
+% ?- dob('Deva',D).
+
+% Output:
+% D = '2003-01-20'
