@@ -1,0 +1,12 @@
+from sklearn.tree import DecisionTreeClassifier
+
+X = [[1,50],[2,60],[3,65],[5,80],[6,90],[7,95]]
+y = ["Fail","Fail","Fail","Pass","Pass","Pass"]
+
+model = DecisionTreeClassifier()
+model.fit(X,y)
+
+h = float(input("Study Hours: "))
+a = float(input("Attendance: "))
+
+print("Result:", model.predict([[h,a]])[0])
