@@ -1,0 +1,29 @@
+board = [" "] * 9
+wins = [(0,1,2),(3,4,5),(6,7,8),
+        (0,3,6),(1,4,7),(2,5,8),
+        (0,4,8),(2,4,6)]
+
+player = "X"
+
+while True:
+    print(board[:3])
+    print(board[3:6])
+    print(board[6:])
+
+    pos = int(input(player + " Enter position (1-9): ")) - 1
+
+    if pos not in range(9) or board[pos] != " ":
+        print("Invalid move")
+        continue
+
+    board[pos] = player
+
+    if any(board[a] == board[b] == board[c] == player for a,b,c in wins):
+        print(player, "Wins!")
+        break
+
+    if " " not in board:
+        print("Draw")
+        break
+
+    player = "O" if player == "X" else "X"
