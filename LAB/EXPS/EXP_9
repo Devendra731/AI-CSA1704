@@ -1,0 +1,32 @@
+import heapq
+
+g = {
+    "A":{"B":1,"C":3},
+    "B":{"D":3,"E":1},
+    "C":{"F":5},
+    "D":{},
+    "E":{"F":2},
+    "F":{}
+}
+
+h = {"A":5,"B":4,"C":4,"D":2,"E":1,"F":0}
+
+def astar(start, goal):
+    q = [(h[start], 0, start, [start])]
+    visited = {}
+
+    while q:
+        _, cost, node, path = heapq.heappop(q)
+
+        if node == goal:
+            return path, cost
+
+        if node in visited and visited[node] <= cost:
+            continue
+
+        visited[node] = cost
+
+        for n, w in g[node].items():
+            heapq.heappush(q, (cost+w+h[n], cost+w, n, path+[n]))
+
+print(astar("A", "F"))
